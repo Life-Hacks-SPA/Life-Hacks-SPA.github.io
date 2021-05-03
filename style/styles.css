@@ -9,7 +9,4 @@
 @import './user-profile.css';
 @import './footer.css';
 
-.zoom
-{
-    zoom: 110%;
-}
+html {zoom: 110%;}
