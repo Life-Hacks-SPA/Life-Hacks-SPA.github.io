@@ -8,3 +8,8 @@
 @import './details-page.css';
 @import './user-profile.css';
 @import './footer.css';
+
+.zoom
+{
+    zoom: 110%;
+}
