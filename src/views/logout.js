@@ -8,7 +8,7 @@ export function logoutFunc(){
                 e.preventDefault();
                 await logout();
                 sessionStorage.clear();
-                page.redirect("/home")
+                page.redirect("/")
             }
         })
 }

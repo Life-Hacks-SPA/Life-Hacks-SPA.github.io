@@ -17,18 +17,22 @@ page('/all-hacks', renderMiddleware, showAllHacks);
 page('/create', renderMiddleware, showCreate);
 page('/details/:id', renderMiddleware, showDetails);
 page('/edit/:id', renderMiddleware, showEdit);
-page('/home', renderMiddleware, showHome);
+page('/', renderMiddleware, showHome);
 page('/login', renderMiddleware, showLogin);
 page('/my-prolife', renderMiddleware, showProfile);
 page('/register', renderMiddleware, showRegister);
 
-updateUserNav();
+
+
 
 if (sessionStorage.getItem("token") == null) {
-    page.start("/home");
+    page.start("/")
+    console.log("in")
 } else {
     page.start("/all-hacks");
 }
+
+updateUserNav();
 
 function renderMiddleware(context, next) {
     context.render = (content) => render(content, document.querySelector("main"));

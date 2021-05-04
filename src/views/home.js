@@ -8,12 +8,13 @@ const home = html`
         <img src="/images/hack2.jpg" alt="life-hack-image">
         <h2>Login to see our hacks right away!</h2>
         <div id="button-div">
-            <a href="#" class="button">Login</a>
-            <a href="#" class="button">Register</a>
+            <a href="/login" class="button">Login</a>
+            <a href="/register" class="button">Register</a>
         </div>
     </div>
 </section>`
 
 export function showHome(context) {
+    console.log('in home')
     context.render(home);
 }

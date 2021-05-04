@@ -1,8 +1,8 @@
 import { login } from "../api/crud.js";
 import { html } from "../../node_modules/lit-html/lit-html.js";
 
-const loginTemplate = (loginFunc) => html`
-<section @submit=${loginFunc} id="login">
+const loginTemplate = (loginFunction) => html`
+<section @submit=${loginFunction} id="login">
     <form id="login-form">
         <div class="container">
             <h1>Login</h1>
@@ -19,9 +19,9 @@ const loginTemplate = (loginFunc) => html`
 </section>`
 
 export async function showLogin(context) {
-    context.render(loginTemplate(loginFunc));
+    context.render(loginTemplate(loginFunction));
 
-    async function loginFunc(e){
+    async function loginFunction(e){
         e.preventDefault();
         
         let username = document.getElementById("username").value;
@@ -32,7 +32,7 @@ export async function showLogin(context) {
             return;
         }
 
-        console.log(username + " " + password)
+        
         await login(username, password);
         document.getElementById("username").value = "";
         document.getElementById("password").value = "";
