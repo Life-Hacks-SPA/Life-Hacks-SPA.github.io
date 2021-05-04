@@ -11,6 +11,7 @@ import { showHome } from "./views/home.js";
 import { showLogin } from "./views/login.js";
 import { showProfile } from "./views/profile.js";
 import { showRegister } from "./views/register.js";
+import { logoutFunc } from "./views/logout.js"
 
 page('/all-hacks', renderMiddleware, showAllHacks);
 page('/create', renderMiddleware, showCreate);
@@ -23,7 +24,7 @@ page('/register', renderMiddleware, showRegister);
 
 updateUserNav();
 
-if(sessionStorage.getItem("token") == null){
+if (sessionStorage.getItem("token") == null) {
     page.start("/home");
 } else {
     page.start("/all-hacks");
@@ -50,3 +51,5 @@ export function updateUserNav() {
             .textContent = `Hi ${sessionStorage.getItem("username")}`;
     }
 }
+
+logoutFunc();
