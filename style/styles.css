@@ -10,3 +10,7 @@
 @import './footer.css';
 
 html {zoom: 110%;}
+
+#view {
+    display: none;
+}
