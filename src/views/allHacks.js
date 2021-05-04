@@ -5,8 +5,9 @@ const allHacks = (data) => html`
 <section id="meme-feed">
     <h1>All Hacks</h1>
     <div id="memes">
-        ${data.length > 0 ? data.map(curHack) : 
-            '<p class="no-memes">No hacks in database.</p>'}
+        ${data.length > 0 ? data.map(curHack) : html`
+        <p class="no-memes">No hacks in database.</p>
+        `}
     </div>
 </section>
 `
@@ -16,7 +17,7 @@ const curHack = (e) => html`
             <div class="card">
                 <div class="info">
                     <p class="meme-title">${e.name}</p>
-                    <img class="meme-image" alt="hack-img" src="${e.imgageUrl}">
+                    <img class="meme-image" alt="hack-img" src="${e.imageUrl}">
                 </div>
                 <div id="data-buttons">
                     <a class="button" href="/details/${e.objectId}">Details</a>
