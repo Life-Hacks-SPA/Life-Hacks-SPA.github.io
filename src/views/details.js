@@ -16,7 +16,7 @@ const detailsTemplate = (data, deleteFunction) => html`
             ${data.owner.objectId == sessionStorage.getItem("personId") ? html`
             <a class="button warning" href="/edit/${data.objectId}">Edit</a>
             <button @click=${deleteFunction} class="button danger">Delete</button>
-            ` : ""}
+            ` : html`<h4>Autor: <span id="autor">${data.owner.username}</span></h4>`}
         </div>
     </div>
 </section>
@@ -24,7 +24,6 @@ const detailsTemplate = (data, deleteFunction) => html`
 
 export async function showDetails(context) {
     const data = await getHackDetails(context.params.id)
-    console.log(data)
     context.render(detailsTemplate(data, deleteFunction));
 
     async function deleteFunction(e) {

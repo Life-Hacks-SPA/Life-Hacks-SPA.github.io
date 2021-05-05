@@ -19,7 +19,7 @@ page('/details/:id', renderMiddleware, showDetails);
 page('/edit/:id', renderMiddleware, showEdit);
 page('/', renderMiddleware, showHome);
 page('/login', renderMiddleware, showLogin);
-page('/my-prolife', renderMiddleware, showProfile);
+page('/profile', renderMiddleware, showProfile);
 page('/register', renderMiddleware, showRegister);
 
 

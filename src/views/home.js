@@ -15,6 +15,5 @@ const home = html`
 </section>`
 
 export function showHome(context) {
-    console.log('in home')
     context.render(home);
 }
