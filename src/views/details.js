@@ -28,7 +28,6 @@ export async function showDetails(context) {
 
     async function deleteFunction(e) {
         e.preventDefault();
-        console.log(e);
 
         let conf = confirm("Are you sure to delete this post?");
 
