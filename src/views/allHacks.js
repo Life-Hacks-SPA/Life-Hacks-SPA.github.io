@@ -32,7 +32,7 @@ const loading = html`<p>Loading...</p>`
 export async function showAllHacks(context) {
     context.render(loadingTemplate)
 
-    let { results } = await getAllHacks();
-    context.render(allHacks(results));
+    // let { results } = await getAllHacks();
+    // context.render(allHacks(results));
 }
 
