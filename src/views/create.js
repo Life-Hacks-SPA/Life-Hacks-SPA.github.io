@@ -44,9 +44,6 @@ export async function showCreate(context) {
             return;
         }
 
-        console.log("FINE!");
-        console.log(name, imageUrl, description);
-
         let result = await createHack(name, imageUrl, description);
         context.page.redirect(`/details/${result.objectId}`)
 

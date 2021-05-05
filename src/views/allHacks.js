@@ -27,8 +27,6 @@ const curHack = (e) => html`
 
 
 export async function showAllHacks(context) {
-    console.log('All hacks page');
-
     let { results } = await getAllHacks();
     context.render(allHacks(results));
 }
