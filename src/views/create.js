@@ -1,5 +1,5 @@
 import { createHack } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const createTemplate = (createFunction) => html`
 <section id="create-meme">

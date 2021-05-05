@@ -1,5 +1,5 @@
 import { getHacksByProfileId } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const profileTemplate = (data) => html`
 <section id="user-profile-page" class="user-profile">

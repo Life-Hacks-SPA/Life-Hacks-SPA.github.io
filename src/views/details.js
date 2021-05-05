@@ -1,5 +1,5 @@
 import { getHackDetails, deleteHack } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const detailsTemplate = (data, deleteFunction) => html`
 <section id="meme-details">

@@ -1,5 +1,5 @@
 import { register } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const registerTemplate = (registerFunction) => html`
 <section id="register">

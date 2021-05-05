@@ -1,5 +1,5 @@
 import { login } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const loginTemplate = (loginFunction) => html`
 <section @submit=${loginFunction} id="login">

@@ -1,5 +1,5 @@
 import { updateHack, getHackDetails } from "../api/crud.js";
-import { html } from "../../node_modules/lit-html/lit-html.js";
+import { html } from "./imported/importedLibraries.js";
 
 const editTemplate = (data, editFunction) => html`
 <section id="edit-meme">

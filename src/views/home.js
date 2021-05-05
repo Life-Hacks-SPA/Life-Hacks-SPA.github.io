@@ -1,4 +1,4 @@
-import { html } from "../../node_modules/lit-html/lit-html.js"
+import { html } from "./imported/importedLibraries.js"
 
 const home = html`
 <section id="welcome">
