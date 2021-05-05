@@ -24,6 +24,7 @@ const detailsTemplate = (data, deleteFunction) => html`
 
 export async function showDetails(context) {
     const data = await getHackDetails(context.params.id)
+    console.log(data)
     context.render(detailsTemplate(data, deleteFunction));
 
     async function deleteFunction(e) {

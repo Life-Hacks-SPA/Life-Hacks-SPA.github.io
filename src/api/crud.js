@@ -14,12 +14,20 @@ export async function createHack(name, imageUrl, description) {
     return await api.post(host + "/classes/Hack", {name, imageUrl, description, owner});
 }
 
+function createPointer(className, userId){
+    return {
+        __type: "Pointer",
+        className: `_${className}`,
+        objectId: userId
+    }
+}
+
 export async function getAllHacks() {
     return await api.get(host + "/classes/Hack");
 }
 
 export async function getHackDetails(id) {
-    return await api.get(host + `/classes/Hack/${id}`);
+    return await api.get(host + `/classes/Hack/${id}` + "?include=owner");
 }
 
 export async function updateHack(id, data) {
@@ -31,10 +39,11 @@ export async function deleteHack(id) {
     return await api.del(host + `/classes/Hack/${id}`);
 }
 
-// export async function getMyHack(){
-//     let userId = sessionStorage.getItem("personId");
-//     return await api.get(host + `/data/`);
-// }
+export async function getHacksByProfileId(){
+    let userId = sessionStorage.getItem("personId");
+    const queryString = JSON.stringify({owner: createPointer('User', userId)});
+    return await api.get(host + '/classes/Hack?where=' + encodeURIComponent(queryString));
+}
 
 export async function login(username, password) {
     const result = await api.post(host + "/login", { username, password });
