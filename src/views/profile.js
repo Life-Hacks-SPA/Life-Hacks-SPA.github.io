@@ -1,10 +1,11 @@
 import { getHacksByProfileId } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
+import { loadingTemplate } from "../animations/loadingGif.js"
 
 const profileTemplate = (data) => html`
 <section id="user-profile-page" class="user-profile">
     <article class="user-info">
-        <img id="user-avatar-url" alt="user-profile" src="/images/male.png">
+        <img id="user-avatar-url" alt="user-profile" src="/images/profile-page.jpg">
         <div class="user-content">
             <p>Username: ${sessionStorage.getItem("username")}</p>
             <p>My posts count: ${data.length}</p>
@@ -33,6 +34,7 @@ function generateEditOption(data) {
 }
 
 export async function showProfile(context) {
+    context.render(loadingTemplate);
     const result = await getHacksByProfileId(sessionStorage.getItem("personId"));
     const data = Object.values(result)[0];
 

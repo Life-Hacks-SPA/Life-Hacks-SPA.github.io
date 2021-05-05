@@ -1,5 +1,5 @@
 import {logout} from "../api/crud.js";
-import {page }from "./imported/importedLibraries.js";
+import { page }from "../imported/importedLibraries.js";
 
 export function logoutFunc(){
     document.querySelector(".user")

@@ -1,7 +1,7 @@
 import * as crud from "./api/crud.js";
 window.crud = crud;
-import { page } from "./views/imported/importedLibraries.js";
-import { render } from "./views/imported/importedLibraries.js"
+import { page } from "./imported/importedLibraries.js";
+import { render } from "./imported/importedLibraries.js"
 
 import { showAllHacks } from "./views/allHacks.js";
 import { showCreate } from "./views/create.js";

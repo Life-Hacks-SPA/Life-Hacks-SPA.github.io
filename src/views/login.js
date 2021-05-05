@@ -1,5 +1,6 @@
 import { login } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
+
 
 const loginTemplate = (loginFunction) => html`
 <section @submit=${loginFunction} id="login">
@@ -32,7 +33,6 @@ export async function showLogin(context) {
             return;
         }
 
-        
         await login(username, password);
         document.getElementById("username").value = "";
         document.getElementById("password").value = "";

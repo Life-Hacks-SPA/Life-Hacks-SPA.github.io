@@ -1,5 +1,6 @@
 import { getHackDetails, deleteHack } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
+import { loadingTemplate } from "../animations/loadingGif.js"
 
 const detailsTemplate = (data, deleteFunction) => html`
 <section id="meme-details">
@@ -23,6 +24,7 @@ const detailsTemplate = (data, deleteFunction) => html`
 `
 
 export async function showDetails(context) {
+    context.render(loadingTemplate)
     const data = await getHackDetails(context.params.id)
     context.render(detailsTemplate(data, deleteFunction));
 

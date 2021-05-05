@@ -1,5 +1,6 @@
 import { getAllHacks } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js"
+import { html } from "../imported/importedLibraries.js"
+import { loadingTemplate } from "../animations/loadingGif.js"
 
 
 const allHacks = (data) => html`
@@ -26,8 +27,11 @@ const curHack = (e) => html`
             </div>
         </div>`
 
+const loading = html`<p>Loading...</p>`
 
 export async function showAllHacks(context) {
+    context.render(loadingTemplate)
+
     let { results } = await getAllHacks();
     context.render(allHacks(results));
 }

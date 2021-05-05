@@ -1,5 +1,6 @@
 import { createHack } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
+
 
 const createTemplate = (createFunction) => html`
 <section id="create-meme">
@@ -44,6 +45,7 @@ export async function showCreate(context) {
             return;
         }
 
+    
         let result = await createHack(name, imageUrl, description);
         context.page.redirect(`/details/${result.objectId}`)
 

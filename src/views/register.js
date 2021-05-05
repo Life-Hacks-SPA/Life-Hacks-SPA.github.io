@@ -1,5 +1,5 @@
 import { register } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
 
 const registerTemplate = (registerFunction) => html`
 <section id="register">
@@ -53,7 +53,6 @@ export async function showRegister(context) {
             return;
         }
 
-        
         await register(email, username, password);
         context.page.redirect("/all-hacks");
         document.getElementById("username").value = "";

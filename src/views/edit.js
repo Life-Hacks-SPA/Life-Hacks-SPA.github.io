@@ -1,5 +1,6 @@
 import { updateHack, getHackDetails } from "../api/crud.js";
-import { html } from "./imported/importedLibraries.js";
+import { html } from "../imported/importedLibraries.js";
+import { loadingTemplate } from "../animations/loadingGif.js"
 
 const editTemplate = (data, editFunction) => html`
 <section id="edit-meme">
@@ -20,6 +21,7 @@ const editTemplate = (data, editFunction) => html`
 </section>`
 
 export async function showEdit(context) {
+    context.render(loadingTemplate);
     const data = await getHackDetails(context.params.id);
     context.render(editTemplate(data, editFunction))
 
@@ -45,7 +47,7 @@ export async function showEdit(context) {
             return;
         }
 
-
+      
         await updateHack(context.params.id, {name, imageUrl, description});
         context.page.redirect(`/details/${context.params.id}`);
 

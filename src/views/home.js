@@ -1,4 +1,4 @@
-import { html } from "./imported/importedLibraries.js"
+import { html } from "../imported/importedLibraries.js"
 
 const home = html`
 <section id="welcome">
