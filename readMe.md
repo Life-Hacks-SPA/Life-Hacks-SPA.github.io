@@ -22,11 +22,22 @@ Idea, creation and editing system.
 
 ### Data structure
 #### Colections
-* Sessions (служебна)
-* Users (служебна)
+* Sessions (official)
+* Users (official)
 ```javascript
-{
-    //todo
+{   
+    email: String
+    username: String,
+    password: String
+}
+```
+* Hack (official)
+```javascript
+{   
+    name: String
+    imageUrl: String,
+    description: String,
+    owner: Pointer<Users>
 }
 ```
 
