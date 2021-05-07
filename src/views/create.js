@@ -1,5 +1,6 @@
 import { createHack } from "../api/crud.js";
 import { html } from "../imported/importedLibraries.js";
+import { showNotification } from './notification/notification.js'
 
 
 const createTemplate = (createFunction) => html`
@@ -31,17 +32,17 @@ export async function showCreate(context) {
         let description = document.getElementById("description").value;
 
         if(name == "" || imageUrl == "" || description == ""){
-            alert("All fields are reuired!");
+            showNotification("All fields are reuired!", "errorBox");
             return;
         }
 
         if(description < 6){
-            alert("Description must be at least 6 characters long!");
+            showNotification("Description must be at least 6 characters long!", "errorBox");
             return;
         }
 
         if(!imageUrl.startsWith("http")){
-            alert("Invalid URL!");
+            showNotification("Invalid URL!", "errorBox");
             return;
         }
 

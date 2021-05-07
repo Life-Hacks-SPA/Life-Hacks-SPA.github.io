@@ -13,6 +13,7 @@ import { showProfile } from "./views/profile.js";
 import { showRegister } from "./views/register.js";
 import { logoutFunc } from "./views/logout.js"
 
+
 page('/all-hacks', renderMiddleware, showAllHacks);
 page('/create', renderMiddleware, showCreate);
 page('/details/:id', renderMiddleware, showDetails);
@@ -21,6 +22,7 @@ page('/', renderMiddleware, showHome);
 page('/login', renderMiddleware, showLogin);
 page('/profile', renderMiddleware, showProfile);
 page('/register', renderMiddleware, showRegister);
+
 
 
 
