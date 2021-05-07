@@ -1,6 +1,6 @@
 import { login } from "../api/crud.js";
 import { html } from "../imported/importedLibraries.js";
-
+import { showNotification } from './notification/notification.js';
 
 const loginTemplate = (loginFunction) => html`
 <section @submit=${loginFunction} id="login">
@@ -29,7 +29,7 @@ export async function showLogin(context) {
         let password = document.getElementById("password").value;
 
         if(username == "" || password == ""){
-            alert("Username or Password must be filled!")
+            showNotification("Username or Password must be filled!", "errorBox");
             return;
         }
 

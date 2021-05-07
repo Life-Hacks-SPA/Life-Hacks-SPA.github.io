@@ -1,6 +1,7 @@
 import { updateHack, getHackDetails } from "../api/crud.js";
 import { html } from "../imported/importedLibraries.js";
-import { loadingTemplate } from "../animations/loadingGif.js"
+import { loadingTemplate } from "../animations/loadingGif.js";
+import { showNotification } from './notification/notification.js';
 
 const editTemplate = (data, editFunction) => html`
 <section id="edit-meme">
@@ -33,17 +34,17 @@ export async function showEdit(context) {
         let description = document.getElementById("description").value;
 
         if(name == "" || imageUrl == "" || description == ""){
-            alert("All fields are reuired!");
+            showNotification("All fields are reuired!", "errorBox");
             return;
         }
 
         if(description < 6){
-            alert("Description must be at least 6 characters long!");
+            showNotification("Description must be at least 6 characters long!", "errorBox");
             return;
         }
 
         if(!imageUrl.startsWith("http")){
-            alert("Invalid URL!");
+            showNotification("Invalid URL!", "errorBox");
             return;
         }
 

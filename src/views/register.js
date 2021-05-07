@@ -1,5 +1,6 @@
 import { register } from "../api/crud.js";
 import { html } from "../imported/importedLibraries.js";
+import { showNotification } from './notification/notification.js';
 
 const registerTemplate = (registerFunction) => html`
 <section id="register">
@@ -34,22 +35,22 @@ export async function showRegister(context) {
         let rePass = document.getElementById("repeatPass").value;
 
         if(username == "" || email == "" || password == ""){
-            alert("All fields are reuired!");
+            showNotification("All fields are reuired!", "errorBox");
             return;
         }
 
         if(!email.includes("@")){
-            alert("Invalid email!");
+            showNotification("Invalid email!", "errorBox");
             return;
         }
 
         if(password.length < 6){
-            alert("Password must be at least 6 characters long");
+            showNotification("Password must be at least 6 characters long", "errorBox");
             return;
         }
 
         if(password !== rePass){
-            alert("Passwords must be idenecal");
+            showNotification("Passwords must be idenecal", "errorBox");
             return;
         }
 
