@@ -3,12 +3,11 @@ import { page }from "../imported/importedLibraries.js";
 import { showNotification } from './notification/notification.js';
 
 export function logoutFunc(){
-    let username = sessionStorage.getItem("username");
     document.querySelector(".user")
         .addEventListener("click", async (e) => {
             if(e.target.textContent == 'Logout'){
                 e.preventDefault();
-                showNotification(`Goodbye, ${username}`, "infoBox");
+                showNotification(`Goodbye`, "infoBox");
                 await logout();
                 sessionStorage.clear();
                 page.redirect("/");
