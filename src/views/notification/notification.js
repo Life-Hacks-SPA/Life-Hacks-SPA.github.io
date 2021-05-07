@@ -9,6 +9,7 @@ export function showNotification(message, typeId){
 
     setTimeout(() => {
         notofication.style.display = "none";
+        messageElement.textContent = "";
         box.removeAttribute("id");
     }, 3000)
 }
