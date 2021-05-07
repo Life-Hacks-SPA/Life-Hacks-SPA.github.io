@@ -8,10 +8,10 @@ export function logoutFunc(){
         .addEventListener("click", async (e) => {
             if(e.target.textContent == 'Logout'){
                 e.preventDefault();
+                showNotification(`Goodbye, ${username}`, "infoBox");
                 await logout();
                 sessionStorage.clear();
                 page.redirect("/");
-                showNotification(`Goodbye, ${username}`, "infoBox");
             }
         })
 }
