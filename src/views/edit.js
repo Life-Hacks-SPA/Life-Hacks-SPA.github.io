@@ -34,7 +34,7 @@ export async function showEdit(context) {
         let description = document.getElementById("description").value;
 
         if(name == "" || imageUrl == "" || description == ""){
-            showNotification("All fields are reuired!", "errorBox");
+            showNotification("All fields are required!", "errorBox");
             return;
         }
 

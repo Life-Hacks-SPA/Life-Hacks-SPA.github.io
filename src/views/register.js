@@ -35,7 +35,7 @@ export async function showRegister(context) {
         let rePass = document.getElementById("repeatPass").value;
 
         if(username == "" || email == "" || password == ""){
-            showNotification("All fields are reuired!", "errorBox");
+            showNotification("All fields are required!", "errorBox");
             return;
         }
 
