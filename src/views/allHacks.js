@@ -6,6 +6,10 @@ import { loadingTemplate } from "../animations/loadingGif.js"
 const allHacks = (data) => html`
 <section id="meme-feed">
     <h1>All Hacks</h1>
+    <form id="search-form">
+    <input id="search" placeholder="Find your Hack" name="search" type="text">
+    <input type="submit" class="registerbtn button" value="Search">
+    </form>
     <div id="memes">
         ${data.length > 0 ? data.map(curHack) : html`
         <p class="no-memes">No hacks in database.</p>
