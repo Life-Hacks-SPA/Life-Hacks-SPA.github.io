@@ -3,10 +3,10 @@ import { html } from "../imported/importedLibraries.js"
 import { loadingTemplate } from "../animations/loadingGif.js"
 
 
-const allHacks = (data) => html`
+const allHacks = (data, findHack) => html`
 <section id="meme-feed">
     <h1>All Hacks</h1>
-    <form id="search-form">
+    <form @submit=${findHack} id="search-form">
     <input id="search" placeholder="Find your Hack" name="search" type="text">
     <input type="submit" class="registerbtn button" value="Search">
     </form>
@@ -35,6 +35,16 @@ const curHack = (e) => html`
 export async function showAllHacks(context) {
     context.render(loadingTemplate);
     let { results } = await getAllHacks();
-    context.render(allHacks(results));
+    context.render(allHacks(results, findHack));
+
+    async function findHack(e){
+        e.preventDefault(e);
+        let searchValue = document.getElementById("search").value;
+        
+        let filtered = results.filter(x => x.name.toLowerCase().includes(searchValue.toLowerCase()));
+        context.render(allHacks(filtered, findHack));
+
+        document.getElementById("search").value = "";
+    }
 }
 

@@ -29,7 +29,6 @@ page('/register', renderMiddleware, showRegister);
 
 if (sessionStorage.getItem("token") == null) {
     page.start("/")
-    console.log("in")
 } else {
     page.start("/all-hacks");
 }
