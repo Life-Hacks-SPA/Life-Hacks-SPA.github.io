@@ -1,25 +1,52 @@
 import * as api from "./api.js"
-import {updateUserNav} from "../app.js"
+import { updateUserNav } from "../app.js"
 
 import { settings } from "../settings/appSetings.js"
 const { host } = settings();
 
-export async function createHack(name, imageUrl, description) {
-    //data = {name, imageUrl, description, owner}
-    let owner = {
-        __type: "Pointer", 
-        "className": "_User", 
-        objectId: sessionStorage.getItem("personId")
-    }
-    return await api.post(host + "/classes/Hack", {name, imageUrl, description, owner});
-}
-
-function createPointer(className, userId){
+function createUserPointer(className, userId) {
     return {
         __type: "Pointer",
         className: `_${className}`,
         objectId: userId
     }
+}
+
+function createPointer(className, objectId) {
+    return {
+        __type: "Pointer",
+        className: `${className}`,
+        objectId
+    }
+}
+
+export async function createHack(name, imageUrl, description) {
+    //data = {name, imageUrl, description, owner}
+    let owner = createUserPointer('User', userId)
+    return await api.post(host + "/classes/Hack", { name, imageUrl, description, owner });
+}
+
+export async function createCommnet(value, hackId) {
+    let owner = createUserPointer('User', sessionStorage.getItem("personId"))
+    let hack = createPointer("Hack", hackId);
+
+    return await api.post(host + "/classes/Comment", { value, hack, owner })
+}
+
+
+export async function getAllCommnets(hackId) {
+    const queryString = JSON.stringify({ hack: createPointer('Hack', hackId) });
+    return await api.get(host + '/classes/Comment?where=' + encodeURIComponent(queryString));
+}
+
+export async function editComment(commentId ,hackId, value){
+    let owner = createUserPointer('User', sessionStorage.getItem("personId"))
+    let hack = createPointer("Hack", hackId);
+    return api.put(host + `/classes/Comment/${commentId}`, {value, hack, owner})
+}
+
+export async function deleteComment(commentId){
+    return await api.del(host + `/classes/Comment/${commentId}`);
 }
 
 export async function getAllHacks() {
@@ -31,7 +58,7 @@ export async function getHackDetails(id) {
 }
 
 export async function updateHack(id, data) {
-      //data = {name, imageUrl, description}
+    //data = {name, imageUrl, description}
     return await api.put(host + `/classes/Hack/${id}`, data);
 }
 
@@ -39,9 +66,9 @@ export async function deleteHack(id) {
     return await api.del(host + `/classes/Hack/${id}`);
 }
 
-export async function getHacksByProfileId(){
+export async function getHacksByProfileId() {
     let userId = sessionStorage.getItem("personId");
-    const queryString = JSON.stringify({owner: createPointer('User', userId)});
+    const queryString = JSON.stringify({ owner: createUserPointer('User', userId) });
     return await api.get(host + '/classes/Hack?where=' + encodeURIComponent(queryString));
 }
 

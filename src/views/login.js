@@ -3,8 +3,8 @@ import { html } from "../imported/importedLibraries.js";
 import { showNotification } from './notification/notification.js';
 
 const loginTemplate = (loginFunction) => html`
-<section @submit=${loginFunction} id="login">
-    <form id="login-form">
+<section id="login">
+    <form @submit=${loginFunction} id="login-form">
         <div class="container">
             <h1>Login</h1>
             <label for="username">Username</label>
