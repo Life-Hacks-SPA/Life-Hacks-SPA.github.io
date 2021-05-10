@@ -2,8 +2,8 @@ import {
     getHackDetails,
     deleteHack,
     getAllCommnets,
-    editComment,
-    deleteComment
+    deleteComment,
+    createCommnet
 } from "../api/crud.js";
 import { html } from "../imported/importedLibraries.js";
 import { loadingTemplate } from "../animations/loadingGif.js";
@@ -24,17 +24,17 @@ const detailsTemplate = (data, deleteFunction, comments) => html`
 
             ${data.owner.objectId == sessionStorage.getItem("personId") ? html`
             <a class="button warning" href="/edit/${data.objectId}">Edit</a>
-            <button @click=${deleteFunction} class="button danger">Delete</button>
+            <button @click="${deleteFunction}" class="button danger">Delete</button>
             ` : html`<h4>Autor: <span id="autor">${data.owner.username}</span></h4>`}
         </div>
 
     </div>
     <div id="hack-comments">
         <h2>Comments</h2>
-        ${comments.length > 0 ? comments.map(curComment) : html`There are no comments yet, be the first!`}
+        ${comments.length > 0 ? comments.map(curComment) : html`There are no comments yet, be the first!<br>`}
         ${sessionStorage.getItem("personId") !== null ? html`
-            <input id="send-comment" placeholder="Add comment" name="send" type="text">
-            <button id="add" class="registerbtn button">Add</button>
+        <input id="send-comment" placeholder="Add comment" name="send" type="text">
+        <button id="add-comment" class="registerbtn button">Add</button>
         ` : ""}
     </div>
 </section>
@@ -43,28 +43,23 @@ const detailsTemplate = (data, deleteFunction, comments) => html`
 const curComment = (e) => html`
 <div class="comment-wrapper">
     <h3>${e.username}</h3>
-    <p id="content">${e.value}</p>
+    <p>${e.value}</p>
     ${e.owner.objectId == sessionStorage.getItem("personId") ? html`
-    <button class="button warning">Edit</button>
-    <button class="button danger">Delete</button>
+    <button class="delete-comment" value=${e.objectId}>Delete</button>
     ` : ""}
 </div>`
 
 export async function showDetails(context) {
     context.render(loadingTemplate)
-    console.log(context.params.id)
-    //const data = await getHackDetails(context.params.id);
+
     let [data, comments] = await Promise.all([
         getHackDetails(context.params.id),
         getAllCommnets(context.params.id)
     ]);
 
-
-    console.log(Object.values(comments)[0]);
-
     context.render(detailsTemplate(data,
         deleteFunction,
-        Object.values(comments)[0]),);
+        Object.values(comments)[0]));
 
     async function deleteFunction(e) {
         e.preventDefault();
@@ -77,4 +72,33 @@ export async function showDetails(context) {
             return;
         }
     }
+    
+    document.getElementById("add-comment")
+        .addEventListener("click", async () => {
+            let comment = document.getElementById("send-comment").value;
+            if (comment == "") {
+                showNotification("Comment cannot be empty!", "errorBox");
+                return;
+            }
+
+            await createCommnet(comment, context.params.id, sessionStorage.getItem("username"));
+            document.getElementById("send-comment").value = "";
+            context.page.redirect(`/details/${context.params.id}`);
+        })
+
+    Array.from(document.getElementsByClassName('delete-comment'))
+        .forEach(e => {
+            e.addEventListener("click", async (e) => {
+                let conf = confirm("Are you sure to delete this comment?");
+
+                if (conf) {
+                    await deleteComment(e.target.value);
+                    e.stopPropagation();
+                    context.page.redirect(`/details/${context.params.id}`);
+                    return;
+                }
+            })
+        })
+
 }
+

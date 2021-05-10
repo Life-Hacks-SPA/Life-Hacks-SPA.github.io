@@ -26,11 +26,11 @@ export async function createHack(name, imageUrl, description) {
     return await api.post(host + "/classes/Hack", { name, imageUrl, description, owner });
 }
 
-export async function createCommnet(value, hackId) {
+export async function createCommnet(value, hackId, username) {
     let owner = createUserPointer('User', sessionStorage.getItem("personId"))
     let hack = createPointer("Hack", hackId);
 
-    return await api.post(host + "/classes/Comment", { value, hack, owner })
+    return await api.post(host + "/classes/Comment", { value, hack, owner, username})
 }
 
 

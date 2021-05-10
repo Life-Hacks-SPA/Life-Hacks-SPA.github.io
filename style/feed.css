@@ -148,3 +148,25 @@ input[value=Search] {
     border: none;
     background: #f1f1f1;
 }
+
+.delete-comment {
+    padding: 2px;
+    color: white;
+    background-color: rgb(230, 0, 0);
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    border-radius: 2px;
+}
+
+#add-comment {
+    color: white;
+    background-color: rgb(230, 0, 0);
+    padding: 8px 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    width: 15%;
+    
+}
