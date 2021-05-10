@@ -170,3 +170,7 @@ input[value=Search] {
     width: 15%;
     
 }
+
+.no-comments {
+    text-align: center;
+}

@@ -31,7 +31,7 @@ const detailsTemplate = (data, deleteFunction, comments) => html`
     </div>
     <div id="hack-comments">
         <h2>Comments</h2>
-        ${comments.length > 0 ? comments.map(curComment) : html`There are no comments yet, be the first!<br>`}
+        ${comments.length > 0 ? comments.map(curComment) : html`<p class="no-comments">There are no comments yet, be the first!</p><br>`}
         ${sessionStorage.getItem("personId") !== null ? html`
         <input id="send-comment" placeholder="Add comment" name="send" type="text">
         <button id="add-comment" class="registerbtn button">Add</button>
