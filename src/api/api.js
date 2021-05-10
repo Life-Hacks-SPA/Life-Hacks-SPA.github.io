@@ -5,8 +5,9 @@ async function request(url, options) {
     try {
         let request = await fetch(url, options);
         if (!request.ok) {
-            let err = await request.json()
-            throw new Error(err.message)
+            let err = await request.json();
+            console.log(err)
+            throw new Error(err.error)
         }
 
         try{
