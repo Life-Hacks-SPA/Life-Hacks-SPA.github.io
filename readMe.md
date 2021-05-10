@@ -11,7 +11,7 @@ Idea, creation and editing system.
 ## Technologies
 * HTML, CSS, JavaScript
 * lit-html, page
-* GitHub Pages, ....
+* GitHub Pages, Back4App
 
 ## Application Pages
 * **Home** - landing page.
