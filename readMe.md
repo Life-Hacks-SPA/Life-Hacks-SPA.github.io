@@ -26,7 +26,7 @@ Idea, creation and editing system.
 * Users 
 ```javascript
 {   
-    email: String
+    email: String,
     username: String,
     password: String
 }
@@ -34,7 +34,7 @@ Idea, creation and editing system.
 * Hack 
 ```javascript
 {   
-    name: String
+    name: String,
     imageUrl: String,
     description: String,
     owner: Pointer<User>
@@ -44,7 +44,7 @@ Idea, creation and editing system.
 ```javascript
 {   
     value: String,
-    hack: Pointer<Hack>
+    hack: Pointer<Hack>,
     owner: Pointer<User>
 }
 ```
