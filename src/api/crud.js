@@ -22,7 +22,7 @@ function createPointer(className, objectId) {
 
 export async function createHack(name, imageUrl, description) {
     //data = {name, imageUrl, description, owner}
-    let owner = createUserPointer('User', userId)
+    let owner = createUserPointer('User', sessionStorage.getItem("personId"));
     return await api.post(host + "/classes/Hack", { name, imageUrl, description, owner });
 }
 
