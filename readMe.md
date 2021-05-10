@@ -23,7 +23,7 @@ Idea, creation and editing system.
 ### Data structure
 #### Colections
 * Sessions (official)
-* Users (official)
+* Users 
 ```javascript
 {   
     email: String
@@ -31,17 +31,26 @@ Idea, creation and editing system.
     password: String
 }
 ```
-* Hack (official)
+* Hack 
 ```javascript
 {   
     name: String
     imageUrl: String,
     description: String,
-    owner: Pointer<Users>
+    owner: Pointer<User>
+}
+```
+* Comment 
+```javascript
+{   
+    value: String,
+    hack: Pointer<Hack>
+    owner: Pointer<User>
 }
 ```
 
 #### Access control
 * All users can view the posts.
-* Only authorized users can create a post.
+* Only authorized users can create a post or comments.
 * Only authenticated users (creators) can edit or delete a post.
+* Only authorized users (creators) can delete a comments.
